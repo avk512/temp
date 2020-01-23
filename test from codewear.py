@@ -6,10 +6,13 @@
 # filter_list([1,2,'aasf','1','123',123]) == [1,2,123]
 #
 from typing import List, Union
+
 #
 # a = [1, 2, 'a', 'b']
 # b = [1, 'a', 'b', 0, 15]
-# c = [1, 2, 'aasf', '1', '123', 123]
+c = [1, 2, 'aasf', '1', '123', 123]
+# d = [1, 4, 6, 3, 234]
+# d = ['ffj', 'dud']
 #
 #
 # def list_only_digit(lst):
