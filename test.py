@@ -4,16 +4,22 @@ directories = {
     '3': []
 }
 
+numbers_list = []
+
 
 def dir_dic(x):
-    for i in range(3, 100):
-        number = input("Введите номер документа: >>> ")
-        type = input("Укажите тип документа (паспорт, счет, СНИЛС): >>> ")
-        name = input("Укажите имя и фамилию владельца документа: >>> ")
-        dir_dic = {}
-        directories[i] = [number]
-        return directories
+    number = input("Введите номер документа: >>> ")
+    type = input("Укажите тип документа (паспорт, счет, СНИЛС): >>> ")
+    name = input("Укажите имя и фамилию владельца документа: >>> ")
+    numbers_list.append(number)
+    q = input("Если хотите добавить еще один номер, нажмите клавишу 1, если не хотите - нажмите любую клавишу: >>> ")
+    if q == 1:
+        dir_dic(directories)
+    for i in range(3, 6):
+        i = str(i)
+        if q != 1:
+            directories[i] = directories.setdefault(i, numbers_list)
 
 
 dir_dic(directories)
-# print(directories)
+print(directories)

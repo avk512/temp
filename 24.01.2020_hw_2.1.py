@@ -20,6 +20,8 @@ print_list = [
     'Введенный вами номер документа уже существует в базе. Проверьте корректность ввода номера.'
 ]
 
+print(directories)
+
 # 1 функция: выбор пользователя = p (people)
 # def number_name(number):
 #     """
@@ -95,7 +97,8 @@ print_list = [
 # 3. Добавление документа (типа, номера, владельца) в список документов
 # 4. Добавление документа (номера документа) в словарь полок: ключ - номер полки, значение - номер документа
 isnumber = None
-new_dic = dict()
+new_docs = dict()
+new_dir = dict()
 number = input("Введите номер документа: >>> ")
 for value in directories.values():
     if number in value:
@@ -103,15 +106,12 @@ for value in directories.values():
         print(print_list[2])
         print(f"isnumber is {isnumber}")
         break
-
-# print(isnumber)
-# print(number)
 if isnumber != True:
     type = input("Укажите тип документа (паспорт, счет, СНИЛС): >>> ")
     name = input("Укажите имя и фамилию владельца документа: >>> ")
-    new_dic = {'type': type, 'number': number, 'name': name}
-    documents.append(new_dic)
-    directories['3'] = [number]
+    new_docs = {'type': type, 'number': number, 'name': name}
+    documents.append(new_docs)
+    directories.keys[3] = [number]
 
 print(documents)
 print(directories)
