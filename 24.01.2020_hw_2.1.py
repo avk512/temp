@@ -35,98 +35,97 @@ def number_name(number):
     :param number: номер документа
     :return: имя гражданина с таким номером документа
     """
-    isnumber = None
-    number = input("Введите номер документа: >>> ")
-    for elem in documents:
-        if number in elem.values():
-            isnumber = True
-            return print(f"Этот документ принадлежит гражданину с именем: {elem['name']}")
-        else:
-            isnumber = False
-    if isnumber == False:
-        print(print_list[0])
-        choice = input(
-            "Если хотите продолжить, нажмите клавишу 1, если хотите выйти из программы, нажмите любую иную клавишу:>>> ")
-        if choice == '1':
-            number_name(documents)
-        else:
-            print("Программа завершена. До свидания.")
-
+    # isnumber = None
+    # number = input("Введите номер документа: >>> ")
+    # for elem in documents:
+    #     if number in elem.values():
+    #         isnumber = True
+    #         return print(f"Этот документ принадлежит гражданину с именем: {elem['name']}")
+    #     else:
+    #         isnumber = False
+    # if isnumber == False:
+    #     print(print_list[0])
+    #     choice = input(
+    #         "Если хотите продолжить, нажмите клавишу 1, если хотите выйти из программы, нажмите любую иную клавишу:>>> ")
+    #     if choice == '1':
+    #         number_name(documents)
+    #     else:
+    #         print("Программа завершена. До свидания.")
 
 # 2 функция: вывод списка всех документов = l (list)
-def list_of_docs(dic):
-    """
-    Функция вывода списка всех документов
-    :param dic: словарь с документами
-    :return: вывод по заданному формату
-    """
-    print("Список всех документов:")
-    for elem in documents:
-        print(f"{elem['type']} \"{elem['number']}\" \"{elem['name']}\"")
+# def list_of_docs(dic):
+#     """
+#     Функция вывода списка всех документов
+#     :param dic: словарь с документами
+#     :return: вывод по заданному формату
+#     """
+#     print("Список всех документов:")
+#     for elem in documents:
+#         print(f"{elem['type']} \"{elem['number']}\" \"{elem['name']}\"")
 
 
 # list_of_docs(documents)
 
 # Функция получения ключа по значению из словаря
-def get_key(val):
-    for key, value in directories.items():
-        if val in value:
-            return key
+# def get_key(val):
+#     for key, value in directories.items():
+#         if val in value:
+#             return key
 
 
 # 3 функция: вывод номера полки = s(shelf)
-def number_shelf(dic):
-    """
-    Функция вывода номера полки, на которой находитс документ с указанным номером
-    :param dic: словарь полок
-    :return: вывод номера полки
-    """
-    isnumber = None
-    number = input("Введите номер документа: >>> ")
-    for key, value in directories.items():
-        if number in value:
-            isnumber = True
-            print(f"Документ №{number} находится на полке с номером {key}")
-    if isnumber != True:
-        print(print_list[1])
-        choice = input(
-            "Если хотите продолжить, нажмите клавишу 1, если хотите выйти из программы, нажмите любую иную клавишу:>>> ")
-        if choice == '1':
-            number_shelf(directories)
-        else:
-            print("Программа завершена. До свидания.")
+# def number_shelf(dic):
+#     """
+#     Функция вывода номера полки, на которой находитс документ с указанным номером
+#     :param dic: словарь полок
+#     :return: вывод номера полки
+#     """
+#     isnumber = None
+#     number = input("Введите номер документа: >>> ")
+#     for key, value in directories.items():
+#         if number in value:
+#             isnumber = True
+#             print(f"Документ №{number} находится на полке с номером {key}")
+#     if isnumber != True:
+#         print(print_list[1])
+#         choice = input(
+#             "Если хотите продолжить, нажмите клавишу 1, если хотите выйти из программы, нажмите любую иную клавишу:>>> ")
+#         if choice == '1':
+#             number_shelf(directories)
+#         else:
+#             print("Программа завершена. До свидания.")
 
 
 # print(directories)
 # print(documents)
 
 # 4 функция: добавление документа на полку - a(add)
-def add_doc_shelf(x, y):
-    # Логика работы фунукции:
-    # 1. У пользователя спрашивают данные для добавления в базы:
-    #     - номер документа
-    #     - тип документа
-    #     - имя владельца
-    # 2. Проверка наличия номера документа в базе:
-    #     - если такой номер есть в базе, то добавление не происходит (предполагается, что номер уникален)
-    #     - если номер уникальный, то будет происходить добавление
-    # 3. Добавление документа (типа, номера, владельца) в список документов
-    # 4. Добавление документа (номера документа) в словарь полок: ключ - номер полки, значение - номер документа
-    isnumber = None
-    number = input("Введите номер документа: >>> ")
-    for value in directories.values():
-        if number in value:
-            isnumber = True
-            print(print_list[2])
-            break
-    if isnumber != True:
-        type = input("Укажите тип документа (паспорт, счет, СНИЛС): >>> ")
-        name = input("Укажите имя и фамилию владельца документа: >>> ")
-        shelf = input("Укажите номер полки, где будет храниться документ (1, 2 или 3): >>> ")
-        new_docs = {'type': type, 'number': number, 'name': name}
-        documents.append(new_docs)
-        directories[shelf].append(number)
-        print(f"Ваш номер документа добавлен в базу и сохранен на полке №{get_key(number)}")
+# def add_doc_shelf(x, y):
+# Логика работы фунукции:
+# 1. У пользователя спрашивают данные для добавления в базы:
+#     - номер документа
+#     - тип документа
+#     - имя владельца
+# 2. Проверка наличия номера документа в базе:
+#     - если такой номер есть в базе, то добавление не происходит (предполагается, что номер уникален)
+#     - если номер уникальный, то будет происходить добавление
+# 3. Добавление документа (типа, номера, владельца) в список документов
+# 4. Добавление документа (номера документа) в словарь полок: ключ - номер полки, значение - номер документа
+# isnumber = None
+# number = input("Введите номер документа: >>> ")
+# for value in directories.values():
+#     if number in value:
+#         isnumber = True
+#         print(print_list[2])
+#         break
+# if isnumber != True:
+#     type = input("Укажите тип документа (паспорт, счет, СНИЛС): >>> ")
+#     name = input("Укажите имя и фамилию владельца документа: >>> ")
+#     shelf = input("Укажите номер полки, где будет храниться документ (1, 2 или 3): >>> ")
+#     new_docs = {'type': type, 'number': number, 'name': name}
+#     documents.append(new_docs)
+#     directories[shelf].append(number)
+#     print(f"Ваш номер документа добавлен в базу и сохранен на полке №{get_key(number)}")
 
 # add_doc_shelf(documents, directories)
 # print(directories)
