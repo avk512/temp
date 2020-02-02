@@ -6,37 +6,25 @@ class Animals:
     """Общий класс всех животных"""
     animalCount = 0  # количество всех животных
     animalWeight = 0  # общий вес всех животных
+    birdCount = 0  # количество видов птиц
+    mlkCount = 0  # количество видов млекопитающих
 
-    # dicStats = {
-    #     'animalCount': 0,
-    #     'animalWeight': 0
-    # }
-
-    def __init__(self, name, weight, vid, voice):
+    def __init__(self, name, weight, vid):
         """Инициализация экземпляра класса с атрибутами: имя, вес, вид животного, его голос"""
         self.name = str(name).title()
         self.weight = weight
         self.vid = str(vid).title()
-        self.voice = voice
         Animals.animalCount += 1  # с каждым новым экземпляром увеличиваем общее кол-во животных
         Animals.animalWeight += weight  # c каждым новым экземпляром увеличиваем общий вес всех животных
-        # Animals.dicStats['animalCount'] = Animals.animalCount
-        # Animals.dicStats['animalWeight'] = Animals.animalWeight
 
     def feed(self):  # общий метод: кормить животных
-        print(f"Животное вида '{self.vid}' с именем '{self.name}' накормлено и напоено.")
-
-    def voices(self):  # общий метод узнавания животных по их голосам
-        v = input("Узнать животное по его голосу (кря, му, бее) - введите звучание из предложенного списка: >> ")
-        if v == self.voice:
-            print(f"По голосу это животное относится к виду '{self.vid}'")
-        else:
-            print("По данному звучанию сложно определить вид животного.")
+        print(f"Живое существо вида '{self.vid}' с именем '{self.name}' накормлено и напоено.")
 
 
 class Birds(Animals):
     """Класс птиц (наследование от общего класса животных)"""
-    birdsCount = 0
+    Animals.birdCount += 1
+    voice = ''
 
     def eggs(self):  # метод для птиц: сбор яиц
         pass
@@ -44,7 +32,7 @@ class Birds(Animals):
 
 class Mammals(Animals):
     """Класс млекопитающих (наследование от общего класса животных"""
-    mammalsCount = 0
+    Animals.mlkCount += 1
 
     def milk(self):  # метод для млекопитающих: доение
         pass
@@ -53,10 +41,13 @@ class Mammals(Animals):
         pass
 
 
-anim1 = Animals('Серый', 6, 'гусь', 'кря')
-anim2 = Animals('Манька', 643, 'корова', 'му')
+bird1 = Animals('Серый', 6, 'гусь')
+bird2 = Animals('Белый', 4, 'гусь')
 
-anim2.feed()
-print(f"{anim2.vid} с именем '{anim2.name}' весит {anim2.weight} кг.")
+mlk1 = Animals('Манька', 643, 'корова')
 
-anim1.voice()
+bird1.feed()
+print(f"{bird1.vid} с именем '{bird1.name}' весит {bird1.weight} кг.")
+print(f"{mlk1.vid} с именем '{mlk1.name}' весит {mlk1.weight} кг.")
+print(f"Общий вес всех животных на ферме составляет: {Animals.animalWeight} кг.")
+print(f"Самое тяжелое животное на ферме: {} с весом {} кг.")
