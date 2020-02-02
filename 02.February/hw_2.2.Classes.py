@@ -41,13 +41,15 @@ class Mammals(Animals):
         pass
 
 
-bird1 = Animals('Серый', 6, 'гусь')
-bird2 = Animals('Белый', 4, 'гусь')
-
-mlk1 = Animals('Манька', 643, 'корова')
+bird1 = Birds('Серый', 6, 'гусь')
+bird2 = Birds('Белый', 4, 'гусь')
+bird3 = Birds('Зеленый', 2, 'гусь')
+mlk1 = Mammals('Манька', 643, 'корова')
 
 bird1.feed()
 print(f"{bird1.vid} с именем '{bird1.name}' весит {bird1.weight} кг.")
 print(f"{mlk1.vid} с именем '{mlk1.name}' весит {mlk1.weight} кг.")
 print(f"Общий вес всех животных на ферме составляет: {Animals.animalWeight} кг.")
-print(f"Самое тяжелое животное на ферме: {} с весом {} кг.")
+# print(f"Самое тяжелое животное на ферме: {} с весом {} кг.")
+print(f"Всего животных на ферме: {Animals.animalCount}")
+print(f"Всего птиц на ферме: {Animals.birdCount}")
