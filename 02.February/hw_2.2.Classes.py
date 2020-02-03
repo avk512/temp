@@ -8,7 +8,8 @@ class Animals:
     """Общий класс всех животных - базовый класс"""
     animalCount = 0  # количество всех животных
     animalWeight = 0  # общий вес всех животных
-    animalDic = {}
+    weightMax = 0  # максимальный вес животного
+    weightMin = 0  # минимальный вес животного
 
     @staticmethod
     def statistics():
@@ -24,7 +25,6 @@ class Animals:
         self.vid = str(vid).upper()
         Animals.animalCount += 1  # с каждым новым экземпляром увеличиваем общее кол-во животных
         Animals.animalWeight += weight  # c каждым новым экземпляром увеличиваем общий вес всех животных
-        self.animalDic[self.name] = [self.vid, self.weight]
 
     def __str__(self):
         """Возврат строки, которая содержит значение атрибута (name) - образец для вывода: print(mlk3)"""
@@ -105,4 +105,3 @@ def main():
 
 
 # main()
-pprint(Animals.animalDic)
