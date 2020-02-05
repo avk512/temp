@@ -47,13 +47,15 @@ class Birds(Animals):
 class Geese(Birds):
     """Расширение классов птиц - гуси"""
 
-    def voice(self):
-        pass
+    def voices(self):
+        print(f"У гуся голос вот такой: {getattr(bird4, 'voice')}")
 
 
 class Ducks(Birds):
     """Расширение классов птиц - утки"""
-    pass
+
+    def voices(self):
+        print(f"У утки голос вот такой: {getattr(bird3, 'voice')}")
 
 
 class Mammals(Animals):
@@ -68,17 +70,23 @@ class Mammals(Animals):
 
 class Cows(Mammals):
     """Расширение классов млекопитающих - коровы и быки"""
-    pass
+
+    def voices(self):
+        print(f"У коровы голос вот такой: {getattr(mlk1, 'voice')}")
 
 
 class Sheeps(Mammals):
     """Расширение классов млекопитающих - овцы и бараны"""
-    pass
+
+    def voices(self):
+        print(f"У овцы и барана голос вот такой: {getattr(mlk2, 'voice')}")
 
 
 class Goats(Mammals):
     """Расширение классов млекопитающих - козы"""
-    pass
+
+    def voices(self):
+        print(f"У коз голос вот такой: {getattr(mlk4, 'voice')}")
 
 
 bird1 = Birds('ко-ко', 3, 'курица', 'ко-ко-ко')
@@ -128,8 +136,12 @@ def main():
         Animals.minWeight()
     elif select_input == '7':
         Animals.stats()
+    elif select_input == '8':
+        Geese.voices('0')
+        # pass
     else:
         print("Программа завершена. До свидания.")
 
 
 main()
+# print(Animals.animalsList[3][-1])
