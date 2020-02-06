@@ -7,6 +7,7 @@ class Animals:
     animalWeight = 0  # общий вес всех животных
     animalsList = []  # список всех животных на ферме
 
+
     @staticmethod
     def stats():
         print(f"Всего на ферме {Animals.animalCount} животных.")
@@ -44,20 +45,6 @@ class Birds(Animals):
         print(f"'{self.vid}' с именем '{self.name}' снесла яйца. Их мы и собрали.")
 
 
-class Geese(Birds):
-    """Расширение классов птиц - гуси"""
-
-    def voices(self):
-        print(f"У гуся голос вот такой: {getattr(bird4, 'voice')}")
-
-
-class Ducks(Birds):
-    """Расширение классов птиц - утки"""
-
-    def voices(self):
-        print(f"У утки голос вот такой: {getattr(bird3, 'voice')}")
-
-
 class Mammals(Animals):
     """Класс млекопитающих (наследование от общего класса животных"""
 
@@ -68,36 +55,22 @@ class Mammals(Animals):
         print(f"Живое существо вида '{self.vid}' с именем '{self.name}' подстрижено.")
 
 
-class Cows(Mammals):
-    """Расширение классов млекопитающих - коровы и быки"""
-
-    def voices(self):
-        print(f"У коровы голос вот такой: {getattr(mlk1, 'voice')}")
-
-
-class Sheeps(Mammals):
-    """Расширение классов млекопитающих - овцы и бараны"""
-
-    def voices(self):
-        print(f"У овцы и барана голос вот такой: {getattr(mlk2, 'voice')}")
-
-
-class Goats(Mammals):
-    """Расширение классов млекопитающих - козы"""
-
-    def voices(self):
-        print(f"У коз голос вот такой: {getattr(mlk4, 'voice')}")
-
-
 bird1 = Birds('ко-ко', 3, 'курица', 'ко-ко-ко')
+ko = bird1.voice
 bird2 = Birds('кукареку', 4, 'петух', 'ку-ка-ре-ку')
+ku = bird2.voice
 bird3 = Birds('кряква', 5, 'утка', 'кря-кря')
+u = bird3.voice
 bird4 = Birds('серый', 6, 'гусь', 'га-га-га')
+g = bird4.voice
 bird5 = Birds('белый', 7, 'гусь', 'га-га-га')
 mlk1 = Mammals('манька', 643, 'корова', 'му-у-у')
+m = mlk1.voice
 mlk2 = Mammals('барашек', 23, 'баран', 'бе-е-е')
+ob = mlk2.voice
 mlk3 = Mammals('кудрявая', 25, 'овца', 'бе-е-е')
 mlk4 = Mammals('рога', 24, 'коза', 'ме-е-е')
+kz = mlk4.voice
 mlk5 = Mammals('копыта', 27, 'коза', 'ме-е-е')
 
 
@@ -137,11 +110,15 @@ def main():
     elif select_input == '7':
         Animals.stats()
     elif select_input == '8':
-        Geese.voices('0')
-        # pass
+        print(f"У гуся голос такой: {g}")
+        print(f"У курицы голос такой: {ko}")
+        print(f"У петуха голос такой: {ku}")
+        print(f"У утки голос такой: {u}")
+        print(f"У коровы голос такой: {m}")
+        print(f"У барана и овцы голос такой: {ob}")
+        print(f"У коз голос такой: {kz}")
     else:
         print("Программа завершена. До свидания.")
 
 
 main()
-# print(Animals.animalsList[3][-1])
