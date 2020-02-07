@@ -51,6 +51,7 @@ def lst(dir):
     sh_str = ', '.join(sh_list)
     return sh_list, sh_str
 
+
 # Конец блока вспомогательных функций ####################
 
 
