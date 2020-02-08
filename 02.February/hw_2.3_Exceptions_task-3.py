@@ -61,21 +61,30 @@ def lst(dir):
 def number_name(doc):
     isnumber = None
     number = input("Введите номер документа: >>> ")
-    for elem in doc:
-        if number in elem.values():
-            isnumber = True
-            return print(f"Этот документ принадлежит гражданину с именем: {elem['name']}")
-        else:
-            isnumber = False
-    if isnumber != True:
-        print(print_list[0])
+    try:
+        for elem in doc:
+            if number in elem.values():
+                isnumber = True
+                return print(f"Этот документ принадлежит гражданину с именем: {elem['name']}")
+            else:
+                isnumber = False
+                if isnumber != True:
+                    print(print_list[0])
+    except KeyError:
+        print(f"Введенный вами номер {number} есть в базе данных, однако идентифицировать его с владельцем невозможно, "
+              f"ввиду отстутствия сведений о ФИО владельца.")
 
 
 # 2 функция: вывод списка всех документов = l (list)
 def list_of_docs(doc):
     print("Список всех документов:")
     for elem in doc:
-        print(f"{elem['type']} \"{elem['number']}\" \"{elem['name']}\"")
+        try:
+            print(f"{elem['type']} \"{elem['number']}\" \"{elem['name']}\"")
+        except KeyError:
+            print(f"{elem['type']} \"{elem['number']}\" - ФИО владельца отсутствует.")
+            # print(f"В базе есть документ {elem['type']} с номером {elem['number']}, однако сопоставить его с владельцем невозможно, "
+            # f"ввиду отсутствия сведений о ФИО владельца.")
 
 
 # 3 функция: вывод номера полки = s(shelf)
