@@ -1,7 +1,13 @@
-### Задача 3: С помощью исключения KeyError проверить наличие поля 'name' у документа
+# Домашнее задание по лекции 2.3: Исключения - Задача №3
 
 # Каталог документов хранится в следующем виде:
 documents = [
+    {"type": "passport", "number": "2207 876234", "name": "Василий Гупкин"},
+    {"type": "invoice", "number": "11-2", "name": "Геннадий Покемонов"},
+    {"type": "insurance", "number": "10006", "name": "Аристарх Павлов"}
+]
+
+documents_out = [
     {"type": "passport", "number": "2207 876234", "name": "Василий Гупкин"},
     {"type": "invoice", "number": "11-2", "name": "Геннадий Покемонов"},
     {"type": "insurance", "number": "10006", "name": "Аристарх Павлов"},
@@ -61,30 +67,21 @@ def lst(dir):
 def number_name(doc):
     isnumber = None
     number = input("Введите номер документа: >>> ")
-    try:
-        for elem in doc:
-            if number in elem.values():
-                isnumber = True
-                return print(f"Этот документ принадлежит гражданину с именем: {elem['name']}")
-            else:
-                isnumber = False
-                if isnumber != True:
-                    print(print_list[0])
-    except KeyError:
-        print(f"Введенный вами номер {number} есть в базе данных, однако идентифицировать его с владельцем невозможно, "
-              f"ввиду отстутствия сведений о ФИО владельца.")
+    for elem in doc:
+        if number in elem.values():
+            isnumber = True
+            return print(f"Этот документ принадлежит гражданину с именем: {elem['name']}")
+        else:
+            isnumber = False
+    if isnumber != True:
+        print(print_list[0])
 
 
 # 2 функция: вывод списка всех документов = l (list)
 def list_of_docs(doc):
     print("Список всех документов:")
     for elem in doc:
-        try:
-            print(f"{elem['type']} \"{elem['number']}\" \"{elem['name']}\"")
-        except KeyError:
-            print(f"{elem['type']} \"{elem['number']}\" - ФИО владельца отсутствует.")
-            # print(f"В базе есть документ {elem['type']} с номером {elem['number']}, однако сопоставить его с владельцем невозможно, "
-            # f"ввиду отсутствия сведений о ФИО владельца.")
+        print(f"{elem['type']} \"{elem['number']}\" \"{elem['name']}\"")
 
 
 # 3 функция: вывод номера полки = s(shelf)
@@ -184,6 +181,16 @@ def create_new_shelf(dir):
         print(f"Список имеющихся полок с номерами: {n}")
 
 
+# Функция вывода имен всех владельцев документов
+def output_of_names(doc):
+    print(f"\nВывод имен всех владельцев документов в базе:")
+    for elem in doc:
+        try:
+            print(f"№{elem['number']} - {elem['name']}")
+        except KeyError:
+            print(f"№{elem['number']} - ФИО владельца документа отсутствует в базе. Уведомите программистов!")
+
+
 # Функция запуска программы
 def main():
     # while True:
@@ -191,7 +198,8 @@ def main():
         "Нажмите клавишу 1 (если хотите узнать, кому принадлежит документ), клавишу 2 (для вывода списка всех "
         "документов), клавишу 3 (для вывода номера полки, на которой находится документ), клавишу 4 (для "
         "добавления нового документа), клавишу 5 (для удаления документа), клавишу 6 (для перемещения документа с "
-        "одной полки на другую), клавишу 7 (для создания новой полки) или клавишу 8 для выхода из программы: >>> ")
+        "одной полки на другую), клавишу 7 (для создания новой полки), клавишу 8 для вывода имен всех владельцев"
+        " документов или клавишу 9 для выхода из программы: >>> ")
     if user_input == '1':
         number_name(documents)
     elif user_input == '2':
@@ -207,6 +215,8 @@ def main():
     elif user_input == '7':
         create_new_shelf(directories)
     elif user_input == '8':
+        output_of_names(documents_out)
+    elif user_input == '9':
         print("Программа завершена. До свидания.")
 
 
