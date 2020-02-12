@@ -65,16 +65,16 @@
 # print(f"Лучший класс {best_grade} с оценкой {avg_rating}")
 
 
-# ### Как писать в файл
-from datetime import datetime
-
-current_time = f"{datetime.now()}\n"
-print(current_time)
-
-# Если файл не существует, то при использовании атрибута "w", файл создается, а текст, содержащийся в файле, будет перезаписываться.
-with open("test_write.txt", "w", encoding="UTF-8") as f:
-    f.write(current_time)
-
-# Если файл не существует, то при использовании атрибута "a" файл создается, а текст будет добавляться в файл в конец.
-with open("test_append.txt", "a", encoding="UTF-8") as f:
-    f.write(current_time)
+# # ### Как писать в файл
+# from datetime import datetime
+#
+# current_time = f"{datetime.now()}\n"
+# print(current_time)
+#
+# # Если файл не существует, то при использовании атрибута "w", файл создается, а текст, содержащийся в файле, будет перезаписываться.
+# with open("test_write.txt", "w", encoding="UTF-8") as f:
+#     f.write(current_time)
+#
+# # Если файл не существует, то при использовании атрибута "a" файл создается, а текст будет добавляться в файл в конец.
+# with open("test_append.txt", "a", encoding="UTF-8") as f:
+#     f.write(current_time)
