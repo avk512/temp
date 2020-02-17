@@ -18,33 +18,30 @@ cook_book = {'Омлет': [{'ingredient_name': 'Яйцо', 'quantity': '2', 'me
 def get_recipes(dictionary, dish):
     """Функция получения рецепта для конкретного блюда"""
     a = dictionary.get(dish)  # список со словарями из ингредиентов
-    # print(a)
     return a
 
-
-def quantity(persons):
-    """Функция расчета количества продуктов по количеству едоков"""
-    z = []
-    a = get_recipes(dictionary, dish)
-    for x in a:
-        # print(x)
-        k = int(x.get('quantity')) * persons
-        z.append(k)
-    return z  # список из цифр
-
-
-def newDict(func1, func2):
+def get_dicts(list):
+    """Функция получения словарей с рецептом"""
     d = {}
+    newDict = {}
+    lst = []
+    persons = int(input("Введите число едоков: >>> "))
+    for elem in list:
+        name = elem.get("ingredient_name")
+        kol = int(elem.get("quantity"))
+        kol = int(elem.get("quantity"))
+        for k, v in elem.items():
+            if (k == 'measure') or (k == 'quantity'):
+                d['quantity'] = kol * persons
+                d[k] = v
+        # print(d)
+        print(elem)
 
-    for x, y in func1:
-        if (x == 'measure') or (x == 'quantity'):
-            d[x] = y
-    # print(d)
 
-
-def result(func1, func2):
+def result(dicts):
     """Функция получения итогового словаря"""
-    pass
+
+    # print(dicts)
 
 
 def main():
@@ -52,6 +49,6 @@ def main():
     pass
 
 
-# get_recipes(cook_book, 'Омлет')
-quantity(get_recipes(cook_book, 'Омлет'), 3)
-# newDict(get_recipes(cook_book, 'Омлет'), quantity(get_recipes(cook_book, 'Омлет'), 3))
+one = get_recipes(cook_book, 'Омлет')
+two = get_dicts(one)
+three = result(two)
