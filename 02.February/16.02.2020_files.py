@@ -20,22 +20,41 @@ def get_recipes(dictionary, dish):
     a = dictionary.get(dish)  # список со словарями из ингредиентов
     return a
 
+
 def get_dicts(list):
-    """Функция получения словарей с рецептом"""
-    d = {}
-    newDict = {}
-    lst = []
-    persons = int(input("Введите число едоков: >>> "))
-    for elem in list:
-        name = elem.get("ingredient_name")
-        kol = int(elem.get("quantity"))
-        kol = int(elem.get("quantity"))
-        for k, v in elem.items():
-            if (k == 'measure') or (k == 'quantity'):
-                d['quantity'] = kol * persons
-                d[k] = v
-        # print(d)
-        print(elem)
+    """Функция получения словарей с рецептом
+    нужно сделать словарь ключи которого ингредиенты, а значение ключей словарь - единица измерения и кол-во.
+    Я бы написал класс, но если так нельзя по условию или вы их не знаете можно обойтись функциями.
+    1) создаём пустой словарь - итоговые данные
+    2) итерируемся по полученному списку ингредиентов при этом поверяем есть ли ключ в итоговом словаре
+        — если нет дописываем ключ и значение в итоговый словарь
+        — если есть то из полученного значения ( метод get для проверки)  берём  и обновляем значение словаря с ключом
+        quantity - полученного значение это тоже словарь
+        dict[‘q’] = dict[‘q’] + value * кол-во гостей
+    """
+    newDict = {}  # словарь итоговый
+    # persons = int(input("Введите число едоков: >>> "))
+    # for elem in list:
+    #     name = elem['ingredient_name']
+    #     del elem['ingredient_name']
+    #     newDict[name] = elem
+
+    # newDict = {row['ingredient_name']: {k: v for k, v in row.items() if k != 'ingredient_name'} for row in list}
+    # for elem in list:
+    #     for k, v in elem.items():
+    #         if k != 'ingredient_name':
+    #             newDict = elem['ingredient_name'] = {k: v}
+
+    newDict = {item.pop('ingredient_name'): item for item in list}
+
+    print(newDict)
+
+    # # проверяем, есть ли ключ в словаре
+    # if elem.get('ingredient_name') not in newDict:
+    #     newDict[elem.get('ingredient_name')] = {}
+    # else:
+    #     newDict[elem.get('ingredient_name')] = {elem.get('measure') = }
+    # print(newDict)
 
 
 def result(dicts):
