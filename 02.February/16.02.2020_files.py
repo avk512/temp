@@ -33,11 +33,11 @@ def get_dicts(list):
         dict[‘q’] = dict[‘q’] + value * кол-во гостей
     """
     newDict = {}  # словарь итоговый
-    # persons = int(input("Введите число едоков: >>> "))
-    # for elem in list:
-    #     name = elem['ingredient_name']
-    #     del elem['ingredient_name']
-    #     newDict[name] = elem
+    persons = int(input("Введите число едоков: >>> "))
+    for elem in list:
+        name = elem['ingredient_name']
+        del elem['ingredient_name']
+        newDict[name] = elem
 
     # newDict = {row['ingredient_name']: {k: v for k, v in row.items() if k != 'ingredient_name'} for row in list}
     # for elem in list:
@@ -45,7 +45,7 @@ def get_dicts(list):
     #         if k != 'ingredient_name':
     #             newDict = elem['ingredient_name'] = {k: v}
 
-    newDict = {item.pop('ingredient_name'): item for item in list}
+    # newDict = {item.pop('ingredient_name'): item for item in list}
 
     print(newDict)
 
