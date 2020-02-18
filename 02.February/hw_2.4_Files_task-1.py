@@ -15,7 +15,7 @@ def cookbook(filename):
             cnt = int(f.readline().strip())  # сохраняем количество ингредиентов
             while i < cnt:
                 ingred = f.readline().strip().replace(" | ", ",").split(",")  # читаем строки с ингредиентами
-                ing.append({'ingredient_name': ingred[0], 'quantity': ingred[1], 'measure': ingred[2]})
+                ing.append({'ingredient_name': ingred[0], 'quantity': int(ingred[1]), 'measure': ingred[2]})
                 i += 1
                 cook_book[dish_name] = ing  # заносим в словарь
             f.readline().strip()  # пустая строка
