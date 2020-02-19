@@ -14,19 +14,28 @@ cook_book = {'Омлет': [{'ingredient_name': 'Яйцо', 'quantity': 2, 'meas
                          {'ingredient_name': 'Винный уксус', 'quantity': 1, 'measure': 'ст.л'},
                          {'ingredient_name': 'Помидор', 'quantity': 2, 'measure': 'шт'}]}
 
-dishes = {}
-i = 1
-for key in cook_book:
-    # print(key)
-    dishes[i] = key
-    i += 1
+# dishes = {}
+# i = 1
+# for key in cook_book:
+#     # print(key)
+#     dishes[i] = key
+#     i += 1
+#
+# print(dishes)
+# lst = [1, 4, 5, 2]
+# print(lst)
+#
+# for x in lst:
+#     if x in dishes.keys():
+#         print(f"{x} есть в словаре")
+#     else:
+#         print(f"{x} отсутствует в словаре")
 
-print(dishes)
-lst = [1, 4, 5, 2]
-print(lst)
+lst = [{'update_id': 138638308,
+        'message': {'message_id': 215, 'from': {'id': 2999, 'is_bot': False, 'first_name': 'Yuri'},
+                    'chat': {'id': 77777777, 'first_name': 'Yuri'}}}]
 
-for x in lst:
-    if x in dishes.keys():
-        print(f"{x} есть в словаре")
-    else:
-        print(f"{x} отсутствует в словаре")
+print(lst[0])
+print(lst[0]['message'])
+print(lst[0]['message']['chat'])
+print(lst[0]['message']['chat']['id'])

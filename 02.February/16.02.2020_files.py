@@ -40,6 +40,18 @@ def shop_list_multy_dishes(d1, d2):
     pass
 
 
+def check_number():
+    """Функция ввода количества едоков и проверки корректности ввода"""
+    while True:
+        select_persons = input("Укажите количество едоков: >>> ")
+        if not select_persons.isnumeric():
+            print("Вы ввели не число. Попробуйте снова: ")
+        else:
+            print(f"Число едоков: {select_persons}.")
+            break
+    return select_persons
+
+
 def main():
     """Главная функция - пользовательское меню"""
     i = 1  # счетчик
@@ -53,13 +65,6 @@ def main():
         print(k, '=>', v)
         numbers.append(k)  # заносим в список порядковые номера доступных блюд
     print("")
-
-    select_persons = input("Укажите количество едоков: >>> ")
-    try:
-        select_persons = int(select_persons)
-    except ValueError:
-        print("Нужно ввести цифры!")
-        exit()
 
     select_dish = input("Введите через пробел цифры нужных блюд: >> ")
     s_d_list = select_dish.replace(',', ' ').split()  # разбиваем введенные пользователем данные на элементы списка
@@ -78,7 +83,7 @@ def main():
         if n in dishes.keys():
             func1 = get_recipes(cook_book, dishes[n])
             print(f"Для выбранного блюда '{dishes[n]}:")
-            print(shop_list_one_dish(func1, int(select_persons)))
+            print(shop_list_one_dish(func1, int(check_number())))
 
 
 main()
