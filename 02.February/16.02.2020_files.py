@@ -17,7 +17,11 @@ cook_book = {'Омлет': [{'ingredient_name': 'Яйцо', 'quantity': 2, 'meas
 
 def get_recipes(dictionary, dish):
     """Функция получения рецепта для конкретного блюда"""
-    a = dictionary.get(dish, "Такого блюда нет!")  # список со словарями из ингредиентов
+    a = dictionary.get(dish, "Такого блюда нет!")  # вернет список со словарями из ингредиентов вида:
+    # [{'ingredient_name': 'Яйцо', 'quantity': 2, 'measure': 'шт'},
+    # {'ingredient_name': 'Молоко', 'quantity': 100, 'measure': 'мл'},
+    # {'ingredient_name': 'Помидор', 'quantity': 2, 'measure': 'шт'}]
+
     return a
 
 
@@ -87,3 +91,4 @@ def main():
 
 
 main()
+# get_recipes(cook_book, 'Омлет')

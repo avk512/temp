@@ -51,8 +51,14 @@ cook_book = {'Омлет': [{'ingredient_name': 'Яйцо', 'quantity': 2, 'meas
 # for i in a:
 #     s.append("".join(f'@{i}(.)'))
 # print(s)
+#
+# a = ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0']
+# for i, item in enumerate(a):
+#     a[i] = int(item)
+# print(a)
 
-a = ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0']
-for i, item in enumerate(a):
-    a[i] = int(item)
-print(a)
+inp = input('Введите через пробел номера блюд, список продуктов для которых вы хотите рассчитать: >>> ')
+if inp.isspace():
+    print("Есть цифры и пробелы")
+else:
+    print("Есть плохие символы")
