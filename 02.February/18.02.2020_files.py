@@ -31,11 +31,28 @@ cook_book = {'Омлет': [{'ingredient_name': 'Яйцо', 'quantity': 2, 'meas
 #     else:
 #         print(f"{x} отсутствует в словаре")
 
-lst = [{'update_id': 138638308,
-        'message': {'message_id': 215, 'from': {'id': 2999, 'is_bot': False, 'first_name': 'Yuri'},
-                    'chat': {'id': 77777777, 'first_name': 'Yuri'}}}]
+# lst = [{'update_id': 138638308,
+#         'message': {'message_id': 215, 'from': {'id': 2999, 'is_bot': False, 'first_name': 'Yuri'},
+#                     'chat': {'id': 77777777, 'first_name': 'Yuri'}}}]
+#
+# print(lst[0])
+# print(lst[0]['message'])
+# print(lst[0]['message']['chat'])
+# print(lst[0]['message']['chat']['id'])
 
-print(lst[0])
-print(lst[0]['message'])
-print(lst[0]['message']['chat'])
-print(lst[0]['message']['chat']['id'])
+
+# a = [1, 2, 3, 4, 5, 6]
+#
+# s = ' '.join('@{}(.)'.format(i) for i in a)
+#
+# print(s)
+
+# s = []
+# for i in a:
+#     s.append("".join(f'@{i}(.)'))
+# print(s)
+
+a = ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0']
+for i, item in enumerate(a):
+    a[i] = int(item)
+print(a)
