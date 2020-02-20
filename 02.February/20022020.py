@@ -1,8 +1,5 @@
 import pprint
 
-#   Домашнее задание к лекции 2.4 "Открытие и чтение файла, запись в файл"
-#   Задача №2 - создание словаря с названием ингредиентов и его объема по количеству едоков
-#
 cook_book = {'Омлет': [{'ingredient_name': 'Яйцо', 'quantity': 2, 'measure': 'шт'},
                        {'ingredient_name': 'Молоко', 'quantity': 100, 'measure': 'мл'},
                        {'ingredient_name': 'Помидор', 'quantity': 2, 'measure': 'шт'}],
@@ -20,13 +17,15 @@ cook_book = {'Омлет': [{'ingredient_name': 'Яйцо', 'quantity': 2, 'meas
                          {'ingredient_name': 'Помидор', 'quantity': 2, 'measure': 'шт'}]}
 
 
-def dishes_list(dictionary):
+# d_list = ['Омлет', 'Фахитос', 'Утка по-пекински']
+
+def dishes_list(dict):
     """Функция, возвращающая список блюд по выбору пользователя"""
     lst_dish = []  # список названий блюд
     dic_dish = {}  # словарь блюд с порядковой нумерацией
     nw = []  # список цифр, отобранных из символов, введенных пользователем
     print("Вам доступны на выбор следующие блюда:")
-    for n, d in enumerate(dictionary, 1):
+    for n, d in enumerate(dict, 1):
         print(n, '=>', d)
         dic_dish[n] = d
     inp = input('Введите через пробел номера блюд, список продуктов для которых вы хотите рассчитать: >>> ').split()
@@ -44,13 +43,13 @@ def dishes_list(dictionary):
 
 
 def persons_count():
-    """Функция получения количества едоков (персон)"""
+    """Функция получения количества персон"""
     while True:
-        persons = input("Укажите количество персон: >>> ")
+        persons = input("Укажите количество едоков: >>> ")
         if not persons.isnumeric():
             print("Вы ввели не число. Попробуйте снова: ")
         else:
-            return int(persons)  # возврат в виде целого числа количества персон
+            return int(persons)
 
 
 def get_recipes(dictionary, list_of_dishes):
@@ -63,8 +62,32 @@ def get_recipes(dictionary, list_of_dishes):
     return data
 
 
-func1 = dishes_list(cook_book)  # запуск функции получения списка блюд от пользователя
-# pprint.pprint(func1)
-func2 = persons_count()  # запуск функции получения количество едоков (персон)
-func3 = get_recipes(cook_book, func1)  # запуск функции получения списка списков словарей для рецептов блюд
-# pprint.pprint(func3)
+def shop_list_one_dish(list_of_recepies, persons):
+    """Функция получения итогового словаря со списком ингредиетов и их количества по количеству персон"""
+    newDict = {}  # словарь ингредиентов
+    # for lst in list_of_recepies:
+    # print(lst)
+    #     name = elem['ingredient_name']  # сохраняем имя продукта (ингредиента)
+    #     quant = elem['quantity']  # сохраняем начальное значение количества продукта
+    #     del elem['ingredient_name']  # удаляем из словаря элемент ингредиента (ключ и значение)
+    #     newDict[name] = elem  # заносим в новый словарь сохраненное имя продукта (ингредиента) в качестве ключа, а в
+    #     # качестве значения словарь с количеством продукта и мерой веса (без наименования продукта, т.к. он удален)
+    #     elem['quantity'] = quant * persons  # перезаписываем новое значение количества продукта
+    #
+    # return newDict
+
+
+# newDict = {}
+# data = []
+# for key, val in cook_book.items():
+#     if d_list[0] == key:
+#         data = cook_book.get(key) # получаем список словарей по конкретному одному блюду
+# pprint.pprint(data)
+
+
+func1 = dishes_list(cook_book)
+func2 = persons_count()
+func3 = get_recipes(cook_book, func1)
+pprint.pprint(func3)
+func4 = shop_list_one_dish(func1, func2)
+# pprint.pprint(func4)

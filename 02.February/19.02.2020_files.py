@@ -1,3 +1,5 @@
+import pprint
+
 cook_book = {'Омлет': [{'ingredient_name': 'Яйцо', 'quantity': 2, 'measure': 'шт'},
                        {'ingredient_name': 'Молоко', 'quantity': 100, 'measure': 'мл'},
                        {'ingredient_name': 'Помидор', 'quantity': 2, 'measure': 'шт'}],
@@ -19,12 +21,16 @@ def dishes_list(dict):
     """Функция, возвращающая список блюд по выбору пользователя"""
     lst_dish = []  # список названий блюд
     dic_dish = {}  # словарь блюд с порядковой нумерацией
+    nw = []  # список цифр, отобранных из символов, введенных пользователем
     print("Вам доступны на выбор следующие блюда:")
     for n, d in enumerate(dict, 1):
         print(n, '=>', d)
         dic_dish[n] = d
     inp = input('Введите через пробел номера блюд, список продуктов для которых вы хотите рассчитать: >>> ').split()
-    result = [int(item) for item in inp]  # преобразуем строки в списке в числа
+    for n in inp:
+        if n.isnumeric():
+            nw.append(n)
+    result = [int(item) for item in nw]  # преобразуем строки в списке в числа
     for x in result:
         if x in dic_dish.keys():
             lst_dish.append(dic_dish[x])  # заносим в список названия блюд, выбранных пользователем
@@ -36,18 +42,14 @@ def dishes_list(dict):
 
 def get_recipes(dict, dishes_list):
     """Функция получения рецепта для конкретного блюда"""
-    dic_ingred = {}  # словарь с ингредиентами для каждого блюда
+    # dic_ingred = {}  # словарь с ингредиентами для каждого блюда
     dlst = []
     for elem in dishes_list:
-        dlst = dict.get(elem)  # вернет список со словарями из ингредиентов вида:
-        # [{'ingredient_name': 'Яйцо', 'quantity': 2, 'measure': 'шт'},
+        dlst.append(dict.get(elem))  # вернет список списков со словарями из ингредиентов вида:
+        # [[{'ingredient_name': 'Яйцо', 'quantity': 2, 'measure': 'шт'},
         # {'ingredient_name': 'Молоко', 'quantity': 100, 'measure': 'мл'},
-        # {'ingredient_name': 'Помидор', 'quantity': 2, 'measure': 'шт'}]
-
-???
-print(dlst)
-# print(dic_ingred)
-# return dic_ingred
+        # {'ingredient_name': 'Помидор', 'quantity': 2, 'measure': 'шт'}]]
+        return dlst
 
 
 def persons_count():
@@ -57,7 +59,7 @@ def persons_count():
         if not persons.isnumeric():
             print("Вы ввели не число. Попробуйте снова: ")
         else:
-            return persons
+            return int(persons)
 
 
 def shop_list(dishes_list, persons):
@@ -77,5 +79,6 @@ def shop_list(dishes_list, persons):
 
 func1 = dishes_list(cook_book)  # запуск функции получения списка блюд от пользователя
 func2 = get_recipes(cook_book, func1)  # запуск функции получения рецептов для конкретных блюд в виде списка словарей
-# func3 = persons_count()  # запуск функции получения количества персон для расчета
-# func4 = shop_list(func1, func3)
+func3 = persons_count()  # запуск функции получения количества персон для расчета
+func4 = shop_list(func1, func3)
+# print(func3)
