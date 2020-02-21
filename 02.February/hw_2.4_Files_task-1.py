@@ -1,3 +1,6 @@
+import pprint
+
+
 #   Домашнее задание к лекции 2.4 "Открытие и чтение файла, запись в файл"
 #   Задача №1 - создание словаря кулинарной книги
 #
@@ -19,7 +22,7 @@ def cookbook(filename):
                 i += 1
                 cook_book[dish_name] = ing  # заносим в словарь
             f.readline().strip()  # пустая строка
-    return print(cook_book)
+    return pprint.pprint(cook_book)
 
 
 cookbook("recipes.txt")
