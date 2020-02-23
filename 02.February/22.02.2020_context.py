@@ -40,10 +40,13 @@
 
 
 import datetime
-import contextlib
+# import contextlib
+from contextlib import contextmanager
 import sys
 
-@contextlib.contextmanager
+
+# @contextlib.contextmanager
+@contextmanager
 def my_open(path, method):
     try:
         file = open(path, method, encoding='UTF-8')
