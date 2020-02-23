@@ -1,0 +1,4 @@
+И это первая строка
+2020-02-22 18:03:50.616601
+
+<frame at 0x000002154B0FFBF0, file 'C:/GIT/temp/02.February/22.02.2020_context.py', line 56, code my_open>
