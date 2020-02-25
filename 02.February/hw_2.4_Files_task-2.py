@@ -38,9 +38,9 @@ def dishes_list(dictionary):
     result = [int(item) for item in nw]  # преобразуем строки в списке в числа
     for x in result:
         if x in dic_dish.keys():
-            # lst_dish.append(dic_dish[x])  # заносим в список названия блюд, выбранных пользователем
-            set_dish.add(dic_dish[x])  # заносим в множество названия блюд (исключая повторы)
-            lst_dish = list(set_dish)  # преобразуем множество в список
+            lst_dish.append(dic_dish[x])  # заносим в список названия блюд, выбранных пользователем
+            # set_dish.add(dic_dish[x])  # заносим в множество названия блюд (исключая повторы)
+            # lst_dish = list(set_dish)  # преобразуем множество в список
     print("Вы выбрали следующие блюда:")
     print(f"- {', '.join(lst_dish)}")
     # print(lst_dish)
@@ -68,6 +68,7 @@ def get_recipes(dictionary, list_of_dishes):
         for key, val in dictionary.items():
             if elem == key:
                 recipes.append(dictionary.get(key))  # получаем список списков словарей рецептов
+
     return recipes
 
 
