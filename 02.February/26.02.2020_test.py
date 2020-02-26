@@ -55,10 +55,25 @@ def persons():
 
 # 3. Получаем итоговый результат в виде словаря со списком ингредиентов и их количества для покупки
 def shop_list(lst_dish, persons):
-    pass
+    dic_ing = {}  # словарь с названием ингредиентов
+    for dish in lst_dish:
+        if dish in cook_book:
+            for elem in cook_book[dish]:
+                name = elem['ingredient_name']  # сохраняем название ингредиента (продукта)
+                if name in dic_ing:
+                    dic_ing[name]['quantity'] = dic_ing[name]['quantity'] + elem['quantity']
+                else:
+                    dic_ing[name] = {'quantity': elem['quantity'], 'measure': elem['measure']}
+    for v in dic_ing.values():
+        v['quantity'] *= persons
+    print(f'\n'"Список продуктов для закупки с учетом {persons} персон:")
+    return pprint.pprint(dic_ing)
 
 
 def main():
     dl = dishes_list(cook_book)  # функция получения от пользователя списка блюд
     prsn = persons()  # функция получения от пользователя количества едоков
-    sl = shop_list(dl, prsn)  # функция получения итогового словаря
+    shop_list(dl, prsn)  # функция получения итогового словаря
+
+
+main()

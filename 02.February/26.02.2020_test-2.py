@@ -24,19 +24,26 @@ def shop_list(lst_dish, persons):
     for dish in lst_dish:
         if dish in cook_book:
             # print(cook_book[dish])
-            dic_ing[cook_book[dish]['ingredient_name']] =
+            # dic_ing[cook_book[dish][]] =0
 
-            #  for elem in cook_book[dish]:
-            #      # print(elem)
-            #      name = elem['ingredient_name']  # сохраняем название ингредиента (продукта)
-            #      # print(name)
-            #      if name in dic_ing:
-            #          dic_ing[name]['quantity'] = dic_ing[name]['quantity'] + elem['quantity']
-            #      else:
-            #          dic_ing[name] = {'quantity': elem['quantity'], 'measure': elem['measure']}
-            #      print(dic_ing[name]['quantity'])
+            for elem in cook_book[dish]:
+                # print(elem)
+                name = elem['ingredient_name']  # сохраняем название ингредиента (продукта)
+                # print(name)
+                if name in dic_ing:
+                    dic_ing[name]['quantity'] = dic_ing[name]['quantity'] + elem['quantity']
+                else:
+                    dic_ing[name] = {'quantity': elem['quantity'], 'measure': elem['measure']}
 
-    # pprint.pprint(dic_ing)
+    for v in dic_ing.values():
+        # print(v)
+        v['quantity'] *= persons
+    pprint.pprint(dic_ing)
+    print()
 
 
-shop_list(['Омлет', 'Омлет', 'Омлет'], 2)
+shop_list(['Омлет', 'Омлет', 'Омлет'], 2)  # яйцо - 12, молоко - 600, помидор - 12
+shop_list(['Омлет', 'Омлет'], 2)  # яйцо - 8, молоко - 400, помидор - 8
+shop_list(['Омлет', 'Омлет', 'Омлет', 'Омлет'], 2)  # яйцо - 16, молоко - 800, помидор - 16
+shop_list(['Омлет', 'Омлет', 'Омлет'], 3)  # яйцо - 18, молоко - 900, помидор - 18
+shop_list(['Омлет', 'Фахитос', 'Омлет'], 2)  # яйцо - 8, молоко - 400, помидор - 12
