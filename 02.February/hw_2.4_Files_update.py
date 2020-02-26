@@ -1,5 +1,6 @@
 import pprint
 
+
 #   Домашнее задание к лекции 2.4 "Открытие и чтение файла, запись в файл"
 #   Задача №1 - создание словаря кулинарной книги
 #
@@ -21,16 +22,13 @@ def cookbook(filename):
                 i += 1
                 cook_book[dish_name] = ing  # заносим в словарь
             f.readline().strip()  # пустая строка
-    # return pprint.pprint(cook_book)
     return cook_book
 
 
-#   Задача №2 - создание словаря с названием ингредиентов и его объема по количеству едоков
 # 1. Сначала получаем от пользователя выбранный им список блюд
 def dishes_list(dictionary):
     """Функция, возвращающая список блюд по выбору пользователя"""
     lst_dish = []  # список названий блюд
-    set_dish = set()  # множество названий блюд
     dic_dish = {}  # словарь блюд с порядковой нумерацией
     nw = []  # список цифр, отобранных из символов, введенных пользователем
     print("Вам доступны на выбор следующие блюда:")
@@ -52,52 +50,39 @@ def dishes_list(dictionary):
 
 
 # 2. Получаем список персон, для которых будем рассчитывать количество ингредиентов
-def persons_count():
+def persons():
     """Функция получения количества едоков (персон)"""
     while True:
         persons = input("Укажите количество персон: >>> ")
         if not persons.isnumeric():
             print("Вы ввели не число. Попробуйте снова: ")
         else:
+            pprint.pprint(f"Количество персон: {persons}")
             return int(persons)  # возврат количества персон в виде целого числа
 
 
-# 3. Получаем список рецептов для одного или нескольких блюд, которые выбрал пользователь
-def get_recipes(dictionary, list_of_dishes):
-    """Функция получения списка списков словарей для одного или нескольких рецептов блюд"""
-    recipes = []  # список для списка словарей рецептов блюд
-    for elem in list_of_dishes:
-        for key, val in dictionary.items():
-            if elem == key:
-                recipes.append(dictionary.get(key))  # получаем список списков словарей рецептов
-    print(recipes)
-    return recipes
-
-
-# 4. Получаем итоговый результат в виде словаря со списком ингредиентов и их количества для покупки
-def shop_list(list_of_recipes, persons_count):
-    resDict = {}  # итоговый словарь
-    for recepts in list_of_recipes:
-        for elem in recepts:
-            print(elem)
-            name = elem['ingredient_name']  # сохраняем название ингредиента (продукта)
-            if name in resDict:
-                resDict[name]['quantity'] = resDict[name]['quantity'] + elem['quantity']
-                # elem['quantity'] = quantity * persons_count  # перемножаем едоков на количество ингредиентов
-            else:
-                resDict[name] = elem
-                # resDict[name]['quantity'] = resDict[name]['quantity'] * persons_count
-
-    print(f"\nСписок продуктов для закупки с учетом {persons_count} персон:")
-    return pprint.pprint(resDict)
+# 3. Получаем итоговый результат в виде словаря со списком ингредиентов и их количества для покупки
+def shop_list(dictionary, lst_dish, persons):
+    dic_ing = {}  # словарь с названием ингредиентов
+    for dish in lst_dish:
+        if dish in dictionary:
+            for elem in dictionary[dish]:
+                name = elem['ingredient_name']  # сохраняем название ингредиента (продукта)
+                if name in dic_ing:
+                    dic_ing[name]['quantity'] = dic_ing[name]['quantity'] + elem['quantity']
+                else:
+                    dic_ing[name] = {'quantity': elem['quantity'], 'measure': elem['measure']}
+    for v in dic_ing.values():
+        v['quantity'] *= persons
+    print(f'\n'"Список продуктов для закупки с учетом {persons} персон:")
+    return pprint.pprint(dic_ing)
 
 
 def main():
-    func0 = cookbook("recipes.txt")  # запуск функции для получения словаря с рецептами
-    func1 = dishes_list(func0)  # запуск функции получения списка блюд от пользователя
-    func2 = persons_count()  # запуск функции получения количество едоков (персон)
-    func3 = get_recipes(func0, func1)  # запуск функции получения списка списков словарей для рецептов блюд
-    shop_list(func3, func2)  # запуск функции получения итогового словаря
+    cb = cookbook('recipes.txt')  # функция получения из файла словаря с рецептами
+    dl = dishes_list(cb)  # функция получения от пользователя списка блюд
+    prsn = persons()  # функция получения от пользователя количества едоков
+    shop_list(cb, dl, prsn)  # функция получения итогового словаря
 
 
 main()
