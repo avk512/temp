@@ -37,14 +37,16 @@ def shop_list(list_of_recipes, persons_count):
             name = elem['ingredient_name']  # сохраняем название ингредиента (продукта)
             quantity = elem['quantity']  # сохраняем количество ингредиента (продукта)
             # elem.pop('ingredient_name')  # удаляем из словаря пару с названием ингредиента
-            elem['quantity'] = quantity * persons_count  # перемножаем едоков на количество ингредиентов
+            # elem['quantity'] = quantity * persons_count  # перемножаем едоков на количество ингредиентов
             if name in resDict:
                 resDict[name]['quantity'] += elem['quantity']
+                resDict[name]['quantity'] *= persons_count
             else:
                 resDict[name] = elem
+                elem['quantity'] = quantity * persons_count  # перемножаем едоков на количество ингредиентов
     print(f"Список продуктов для закупки с учетом {persons_count} персон:")
     return pprint.pprint(resDict)
 
 
-recipes = get_recipes(cook_book, ['Омлет', 'Фахитос'])
+recipes = get_recipes(cook_book, ['Омлет', 'Омлет', 'Омлет', 'Фахитос'])
 shop_list(recipes, 2)

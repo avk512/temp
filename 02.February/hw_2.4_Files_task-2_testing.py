@@ -82,6 +82,7 @@ def shop_list(list_of_recipes, persons_count):
             # elem.pop('ingredient_name')  # удаляем из словаря пару - ключ: значение с названием ингредиента
             # elem['quantity'] = quantity * persons_count  # перемножаем едоков на количество ингредиентов
             if name in resDict:
+                elem['quantity'] = quantity * persons_count  # перемножаем едоков на количество ингредиентов
                 resDict[name]['quantity'] += elem['quantity']
                 # del elem
             else:
