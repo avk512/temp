@@ -1,6 +1,5 @@
 import pprint
 
-
 #   Домашнее задание к лекции 2.4 "Открытие и чтение файла, запись в файл"
 #   Задача №1 - создание словаря кулинарной книги
 #
@@ -86,7 +85,7 @@ def shop_list(list_of_recipes, persons_count):
         for elem in recepts:
             name = elem['ingredient_name']  # сохраняем название ингредиента (продукта)
             quantity = elem['quantity']  # сохраняем количество ингредиента (продукта)
-            elem.pop('ingredient_name')  # удаляем из словаря пару с названием ингредиента
+            # elem.pop('ingredient_name')  # удаляем из словаря пару с названием ингредиента
             elem['quantity'] = quantity * persons_count  # перемножаем едоков на количество ингредиентов
             if name in resDict:
                 resDict[name]['quantity'] += elem['quantity']

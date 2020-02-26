@@ -57,6 +57,7 @@ def persons_count():
         if not persons.isnumeric():
             print("Вы ввели не число. Попробуйте снова: ")
         else:
+            pprint.pprint(f"Количество персон: {persons}")
             return int(persons)  # возврат количества персон в виде целого числа
 
 
@@ -92,8 +93,8 @@ def shop_list(list_of_recipes, persons_count):
 def main():
     func1 = dishes_list(cook_book)  # запуск функции получения списка блюд от пользователя
     func2 = persons_count()  # запуск функции получения количество едоков (персон)
-    func3 = get_recipes(cook_book, func1)  # запуск функции получения списка списков словарей для рецептов блюд
-    func4 = shop_list(func3, func2)
+    pprint(get_recipes(cook_book, func1))  # запуск функции получения списка списков словарей для рецептов блюд
+    # func4 = shop_list(func3, func2)
 
 
 main()
