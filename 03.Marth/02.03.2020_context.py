@@ -37,21 +37,19 @@ def open_timer(filename):
         file = open(filename, encoding='UTF-8')
         yield file
     finally:
-        # now = datetime.datetime.now()  # текущие дата и время
-        now = time.monotonic()
-        # dt = now - dt_start  # расчетное время выполнения блока кода с датой
-        timing = now - t_start  # расчетное время выполнения блока кода без даты (только время)
-        print(f'\nВремя выполнения кода: {timing} секунд.\n')
-        print("Program time: {:>.3f}".format(timing) + " seconds.")
-        print(f"Время выполнения: {format(timing, ':>.3f')} секунд")
-        print(f"Время выполнения кода: {timing:>.3f} секунд.")
+        now_time = time.monotonic()
+        timing = now_time - t_start  # расчетное время выполнения блока кода без даты (только время)
+        print(f"Дата и время начала выполнения кода: {dt_start}.")
+        print(f'Время выполнения кода (полный формат): {timing} секунд.')
+        # print(f"Время выполнения: {format(timing, ':>.3f')} секунд\n")
+        print(f"Время выполнения кода (округленный формат): {timing:>.3f} секунд.\n")
 
 
 if __name__ == '__main__':
     cook_book = {}
     with open_timer('recipes.txt') as file:
         while True:
-            time.sleep(0.1)
+            time.sleep(0.1)  # задержка выполнения кода, иначе мгновенно выполняется
             i = 0  # счетчик
             stroka = file.readline().strip()  # читаем файл построчно
             ing = []  # промежуточный список для ингредиентов
