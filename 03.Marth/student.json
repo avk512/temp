@@ -1,0 +1,11 @@
+{
+  "first_name": "Greg",
+  "last_name": "Dean",
+  "scores": [
+    70,
+    80,
+    90
+  ],
+  "description": "Good job, Greg!",
+  "certificate": true
+}

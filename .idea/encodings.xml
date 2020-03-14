@@ -3,7 +3,9 @@
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$/02.February/hello.txt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/02.February/simple_read.py" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/03.Marth/11.03.2020_json.py" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/03.Marth/channel_content.json" charset="windows-1251" />
-    <file url="PROJECT" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/03.Marth/items.json" charset="windows-1251" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>
