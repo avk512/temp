@@ -1,0 +1,51 @@
+# Поиск в каталоге ITunes исполнителя и обложки альбома исполнителя
+# Нас могут интересовать следующие параметры для запроса
+# - term (текстовая строка, которую нужно найти, обязательный параметр)
+# - country (выбор страны RU, обязательный параметр)
+# - media (тип контента, музыка music в данной ситуации)
+# - limit (ограничение запроса, максимально 200)
+
+import requests
+from pprint import pprint
+import os
+
+itunes_url = 'https://itunes.apple.com/search'
+
+params = {
+    'term': 'Владимир Высоцкий',
+    'country': 'RU',
+    'limit': 200,
+    'media': 'music'
+}
+
+resp = requests.get(itunes_url, params=params)
+resp_json = resp.json()
+
+for key in resp_json:
+    print(key)
+
+print(resp_json['resultCount'])
+print(len(resp_json['results']))
+# pprint(resp_json['results'])
+
+for track in resp_json['results']:
+    # print('+' * 30)
+    # pprint(track)
+
+    track_id = track['trackId']
+    track_name = track['trackName']
+    artist = track['artistName']
+    print(artist)
+
+#     f_name = f'{track_id}_{track_name}_{artist}.jpg'
+#     file_name = f_name.replace('"', "").replace("/", "-").replace("&", ",").replace(". ","_")
+#     full_file_name = os.path.join('artwork', file_name)
+#     print(f"Имя файла: {full_file_name}")
+#
+#     with open(full_file_name, 'wb') as f:
+#         img_url = track['artworkUrl60']
+#         img_file_resp = requests.get(img_url)
+#         img = img_file_resp.content
+#         f.write(img)
+#
+# print("Выполнено")
