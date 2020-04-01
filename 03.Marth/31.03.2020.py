@@ -16,4 +16,4 @@ resp = requests.post(url, params=params, data=data)
 
 resp_json = resp.json()
 print(resp_json)
-print(resp_json['text'])
+# print(resp_json['text'])
