@@ -8,51 +8,46 @@ headers = {
     'Authorization': 'OAuth AgAAAAAB9fBVAAZDy-BQ8R0t00G8jf5Kq6G9RNE',
     'Content-Type': 'application/json',
 }
+
+
+def files_name(dir_input):
+    """Получение списка файлов в исходной папке"""
+    fname = os.listdir(dir_input)  # список имен файлов в папке
+    print(
+        f"Готовятся к загрузке файлы: \n{fname}\n")  # ['DE-Ru.txt', 'ES-Ru.txt', 'FR-Ru.txt']
+    return fname
+
+
+def fls(func_files_name):
+    for file in func_files_name:
+        return file
+
+
 params = {
-    'path': 'test.txt',
+    # 'path': 'test.txt',
+    'path': fls(files_name('texts_out')),
     'overwrite': 'true',
 }
 
-# def open_file(dir_input):
-#     fname = os.listdir(dir_input)  # список имен файлов в папке
-#     full_fname = os.path.join(os.path.abspath(dir_input), fname)
-#     with open(full_fname, 'rb', encoding='UTF-8') as fn:
-#         fopened = fn.read()
-#     return fopened
-#
-#
-# one = open_file('texts_out')
 
-resp = requests.get(URL, headers=headers, params=params)
-resp_json = resp.json()
-print(resp_json['href'])
+# def fls(func_files_name):
+#     fname = func_files_name()  # ['DE-Ru.txt', 'ES-Ru.txt', 'FR-Ru.txt']
 
-resp_upload = requests.put(resp_json['href'], 'text_out/FR-Ru.txt')
 
-# resp_two = requests.put()
 # resp = requests.get(URL, headers=headers, params=params)
 # resp_json = resp.json()
-# pprint(resp_json)
+# print(resp_json['href'])  # ссылка для загрузки файла
 
 
-# pprint(resp_json['items'])
-# fil = resp_json['items']
-# pprint(fil)
-# for item in fil:
-#     pprint(item['name'])
-# list_a = resp_json['_embedded']['items']
-# # pprint(list_a)
-# for item in list_a:
-#     print(f"Объект '{item['name']}' создан {item['created']}")
-# used_space = resp_json['used_space']
-# total_space = resp_json['total_space']
-# print(f"Занято: {used_space} байт")
-# print(f"Использовано: {total_space} байт")
-# print(f"Свободно {round((total_space - used_space) * (0.0009765625 ** 3), 1)} Гб")
-# print((b))
-# kb = b * 0.0009765625
-# mb = kb * 0.0009765625
-# gb = mb * 0.0009765625
-# print(f"{round(kb, 2)} Kb")
-# print(f"{round(mb, 2)} Mb")
-# print(f"{round(gb, 2)} Gb")
+def main():
+    fname = files_name('texts_out')  # ['DE-Ru.txt', 'ES-Ru.txt', 'FR-Ru.txt']
+    resp = requests.get(URL, headers=headers, params=params)
+    resp_json = resp.json()
+    for file in fname:
+        print(resp_json['href'])  # ссылка для загрузки файла
+        # print(file)
+        resp_upload = requests.put(resp_json['href'], file)
+
+
+if __name__ == '__main__':
+    main()

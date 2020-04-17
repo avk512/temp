@@ -49,7 +49,7 @@ def main():
         fn = f'{fns}-Ru.txt'
         # print(fn)
         new_file = os.path.join('texts_out', fn)
-        # print(new_file)
+        print(new_file)
         with open(new_file, 'w', encoding='UTF-8') as f:
             fopen = file_open('texts_in', file)
             # print(fopen)
